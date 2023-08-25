@@ -1,4 +1,4 @@
-# recursive-document-agents
+# recursive-document-agents-devops
 Refer to my blog [Building Production-Ready LLM Apps With LlamaIndex: Recursive Document Agents for Dynamic Retrieval](https://betterprogramming.pub/building-production-ready-llm-apps-with-llamaindex-recursive-document-agents-for-dynamic-retrieval-1f4b25287918?sk=d1e9646f77030401df946805e96e6dc7) for details.
 
 ## Application Setup
