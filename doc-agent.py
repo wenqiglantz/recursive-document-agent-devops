@@ -15,15 +15,16 @@ from dotenv import load_dotenv
 import openai
 import os
 
-#loads dotenv lib to retrieve API keys from .env file
+# loads dotenv lib to retrieve API keys from .env file
 load_dotenv()
 
 openai.api_key = os.getenv("OPENAI_API_KEY")
 
-#define LLM service
+# define LLM service
 llm = OpenAI(temperature=0.1, model_name="gpt-3.5-turbo")
 service_context = ServiceContext.from_defaults(llm=llm)
 
+# document loading
 titles = [
     "DevOps Self-Service Pipeline Architecture and Its 3–2–1 Rule", 
     "DevOps Self-Service Centric Terraform Project Structure", 
@@ -35,7 +36,11 @@ for title in titles:
     documents[title] = SimpleDirectoryReader(input_files=[f"data/{title}.pdf"]).load_data()
 print(f"loaded documents with {len(documents)} documents")
 
-# Build agents dictionary
+# Build agents dictionary. 
+# For each document, create two types of indexes. 
+# Turn each index into a query engine. 
+# For each query engine, define 'QueryEngineTools', used to build OpenAIAgent to handle queries.
+# Build the agents and place in an Agents Dictionary 'agents[title]'
 agents = {}
 
 for title in titles:
@@ -90,7 +95,7 @@ for title in titles:
     node = IndexNode(text=doc_summary, index_id=title)
     nodes.append(node)
 
-# define retriever
+# define retriever to find the most relevant node based on a query
 vector_index = VectorStoreIndex(nodes)
 vector_retriever = vector_index.as_retriever(similarity_top_k=1)
 
