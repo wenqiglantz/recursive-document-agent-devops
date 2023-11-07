@@ -4,7 +4,7 @@ Refer to my blog [Building Production-Ready LLM Apps With LlamaIndex: Recursive 
 ## Application Setup
 
 ```
-conda create --name py38_env 
+conda create --name py38_env python=3.11
 conda activate py38_env
 pip install -r requirements.txt
 ```
