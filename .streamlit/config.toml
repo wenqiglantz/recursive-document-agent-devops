@@ -1,0 +1,4 @@
+[global]
+
+# Change the value to 'true' to enable disk caching
+persistCache = true
