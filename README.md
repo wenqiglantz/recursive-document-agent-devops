@@ -18,3 +18,9 @@ Now run the app by kicking off this command:
 ```
 python doc-agent.py
 ```
+
+Or
+For Streamlit,
+```
+streamlit run stream-doc.py
+```
